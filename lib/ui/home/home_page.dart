@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import '../common/loading_overlay.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   static const _searchInputDecorate = InputDecoration(
@@ -23,12 +25,24 @@ class HomePage extends StatelessWidget {
   );
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  void _incrementCounter() {
+    LoadingOverlay.of(context).show();
+    Timer(const Duration(seconds: 3), () {
+      LoadingOverlay.of(context).hide();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Padding(
+        children: [
+          const Padding(
             padding: EdgeInsets.only(left: 24.0, top: 16.0),
             child: Text(
               'What do you want to watch?',
@@ -38,7 +52,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
           SizedBox(
@@ -46,12 +60,14 @@ class HomePage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(left: 24.0, right: 24.0),
               child: TextField(
-                style: TextStyle(
+                readOnly: true,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 14,
                 ),
                 cursorColor: Colors.white,
-                decoration: _searchInputDecorate,
+                decoration: HomePage._searchInputDecorate,
+                onTap: _incrementCounter,
               ),
             ),
           ),

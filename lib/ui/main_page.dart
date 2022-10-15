@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mymovie_imdb/ui/common/loading_overlay.dart';
 import 'package:mymovie_imdb/ui/home/home_page.dart';
 import 'package:mymovie_imdb/ui/setting/setting_page.dart';
 import 'package:mymovie_imdb/ui/watchlist/watchlist_page.dart';
@@ -60,9 +61,11 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: _createBottomNavigationBar(),
+    return LoadingOverlay(
+      child: Scaffold(
+        body: _pages[_selectedIndex],
+        bottomNavigationBar: _createBottomNavigationBar(),
+      ),
     );
   }
 }
