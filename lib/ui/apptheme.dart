@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const scaffuldBgColor = Color(0xFF15141F);
+const scaffuldBgColor = Color(0xFF1E1E1E);
 const textInputBgColor = Color(0xFF211F30);
 const whiteColor = Color(0xFFDADADA);
 

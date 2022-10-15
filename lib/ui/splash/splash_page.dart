@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:mymovie_imdb/ui/home/home_page.dart';
+import 'package:mymovie_imdb/ui/main_page.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -13,7 +13,7 @@ class SplashPage extends StatelessWidget {
       const Duration(seconds: 3),
       () => Navigator.of(context).pushReplacement(PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) =>
-            const HomePage(),
+            const MainPage(),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           const begin = Offset(0.0, 1.0);
           const end = Offset.zero;
@@ -31,7 +31,7 @@ class SplashPage extends StatelessWidget {
     );
 
     return Container(
-      color: Colors.amber[200],
+      color: const Color(0xFF1E1E1E),
       child: Container(
         child: Lottie.asset('assets/lottie-popcorn.json'),
       ),

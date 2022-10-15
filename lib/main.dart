@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mymovie_imdb/ui/apptheme.dart';
-import 'package:mymovie_imdb/ui/home/splash_page.dart';
+import 'package:mymovie_imdb/ui/splash/splash_page.dart';
 
-import 'ui/home/home_page.dart';
+import 'ui/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +15,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "My Movie",
       initialRoute: '/',
+      theme: AppTheme.lightMode,
       routes: {
         '/': (context) => const SplashPage(),
-        '/home': (context) => const HomePage(),
+        '/main': (context) => const MainPage(),
       },
     );
   }
