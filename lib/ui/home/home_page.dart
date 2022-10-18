@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:mymovie_imdb/ui/home/widget/movie_item_widget.dart';
 import '../common/loading_overlay.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,7 +30,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  void _incrementCounter() {
+  void _showLoading() {
     LoadingOverlay.of(context).show();
     Timer(const Duration(seconds: 3), () {
       LoadingOverlay.of(context).hide();
@@ -55,20 +56,36 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(
             height: 24,
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
             child: Padding(
               padding: EdgeInsets.only(left: 24.0, right: 24.0),
               child: TextField(
                 readOnly: true,
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 14,
                 ),
                 cursorColor: Colors.white,
                 decoration: HomePage._searchInputDecorate,
-                onTap: _incrementCounter,
               ),
+            ),
+          ),
+          const SizedBox(
+            height: 24,
+          ),
+          SizedBox(
+            height: 180,
+            child: ListView(
+              // This next line does the trick.
+              scrollDirection: Axis.horizontal,
+              children: const <Widget>[
+                MovieItemWidget(bgColor: Colors.red),
+                MovieItemWidget(bgColor: Colors.blue),
+                MovieItemWidget(bgColor: Colors.green),
+                MovieItemWidget(bgColor: Colors.yellow),
+                MovieItemWidget(bgColor: Colors.orange),
+              ],
             ),
           ),
         ],
